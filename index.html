@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>System Alert: Unauthorized Access</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #00ff00;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            color: #00ff00;
+        }
+        .container {
+            padding: 50px;
+        }
+        .hackMessage {
+            font-size: 18px;
+            margin-bottom: 30px;
+            animation: typing 3.5s steps(30, end);
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+            width: 15ch;
+            margin: 0 auto;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 15ch }
+        }
+        .step {
+            display: none;
+        }
+        #finalMessage {
+            display: none;
+            color: #ff69b4;
+            font-size: 24px;
+        }
+        .letter {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            color: #000;
+            max-width: 800px;
+            margin: 20px auto;
+            border: 1px solid #00ff00;
+            font-family: 'Arial', sans-serif;
+            text-align: left;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #00ff00;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00cc00;
+        }
+        .console {
+            text-align: left;
+            margin: 0 auto;
+            width: 80%;
+        }
+        .hidden {
+            visibility: hidden;
+        }
+        .progress-bar {
+            width: 300px;
+            background-color: #333;
+            margin: 10px auto;
+            height: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 2px solid #00ff00;
+        }
+        .progress-bar-inner {
+            background-color: #00ff00;
+            height: 100%;
+            width: 0%;
+        }
+        .blinking-text {
+            animation: blink 1s steps(5, start) infinite;
+        }
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        /* Envelope Styles */
+        .envelope {
+            margin: 50px auto;
+            width: 150px;
+            height: 100px;
+            background: linear-gradient(to bottom, #fff, #ccc);
+            position: relative;
+            cursor: pointer;
+            border: 2px solid #00ff00;
+        }
+        .envelope::before,
+        .envelope::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border: 2px solid #00ff00;
+            border-top: none;
+            transform-origin: bottom;
+            transition: 0.5s;
+        }
+        .envelope::before {
+            transform: rotateX(0deg);
+            z-index: 2;
+        }
+        .envelope::after {
+            transform: rotateX(-90deg);
+            z-index: 1;
+        }
+        .open .envelope::before {
+            transform: rotateX(90deg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>System Alert: Unauthorized Access Detected</h1>
+        <div id="hackIntro" class="hackMessage">
+            Attempting to breach firewall... <br>
+            Accessing hidden files... <br>
+            Decrypting secret message...
+        </div>
+
+        <div id="progress-section" class="hidden">
+            <p>Progress: </p>
+            <div class="progress-bar">
+                <div id="progress-bar-inner" class="progress-bar-inner"></div>
+            </div>
+        </div>
+
+        <!-- Step 1: "System Hack" starts -->
+        <div id="step1" class="step console">
+            <p><strong>Question 1:</strong> Decode this message: "Rpj lw yz" <br> (Hint: Shift letters by 3)</p>
+            <button onclick="nextStep('step2')">Jxz kl nf</button>
+            <button onclick="wrongAnswer()">I don't know!</button>
+        </div>
+
+        <!-- Step 2: Decrypting continues -->
+        <div id="step2" class="step console">
+            <p><strong>Question 2:</strong> Enter access code: 12 + 34 - 9 = ?</p>
+            <button onclick="nextStep('step3')">37</button>
+            <button onclick="wrongAnswer()">42</button>
+        </div>
+
+        <!-- Step 3: Final "breach" message -->
+        <div id="step3" class="step console">
+            <p><strong>Final Decryption:</strong> Enter the final code to unlock hidden files: Virus Debugging</p>
+            <button onclick="revealFinalMessage()">Jxz kl nf</button>
+            <button onclick="wrongAnswer()">I have no idea</button>
+        </div>
+
+        <!-- Final Confession Message -->
+        <div id="finalMessage">
+            <h2 class="blinking-text">System Breach Complete 🎉</h2>
+            <p>You cracked the code... and the truth is... tententententntenten... pls scroll down 😊</p>
+            <div class="envelope" onclick="openEnvelope()">
+                <p>Click the envelope to reveal the letter</p>
+            </div>
+        </div>
+
+        <!-- Hidden Confession Letter -->
+        <div id="confessionLetter" class="letter">
+            <h2>09/29/24</h2>
+            <p>
+                Dear Ms. Concepcion, <br><br>
+            I have carried this inside of me for what feels like an eternity. How am I to put it? I don’t even know. But I just can’t keep this inside anymore. I have to tell you what’s been going on in my mind and my heart for what feels like an eternity now, and hopefully you will understand why I kept quiet for so long. <br><br>
+It was during online classes in Grade 7 that it all started. It was such a bizarre time for everyone, and honestly, I wasn’t expecting anything out of it. But then we ended up being grouped together for a project. I didn’t think much of it at first, but the more we interacted, I started noticing things about you. It wasn’t just your smile—but that really did make me smile, too—it was everything. I always think about your kindness, your patience, and the way you treated people when things get hectic. You were just one of those people who exuded this cool, friendly energy about you, and that’s just how it drew me to you. There was something that just kind of clicked inside me, even though I had no idea what It was at the time. <br><br> I mean, there was just something about you that initially drew my attention in a way that nobody else had before—and once I was able to think about you, I just couldn’t stop doing so afterward. I was too shy to speak out then. We were classmates, and I wasn’t very open regarding what I felt I had for this person because I didn’t think it would come off anyway. Maybe the feelings would just pass with the passing of time; they wouldn’t. <br><br>
+Then came Grade 8, and I truly believed my world crashed when we were no longer classmates. It felt like something was missing. We hardly ever got to talk, and I kept thinking we must have been in the same class again. It’s kind of embarrassing, but during recess, I’d walk by your classroom just to catch a glimpse of you. I wasn’t brave enough to say anything then, but just seeing you for a moment brightened up my day. It is really silly, but those short minutes gave me little moments of happiness. You did not know it then, but even at that time, you could brighten up my day just by being yourself. <br><br>
+I was excited when I knew we were going to be classmates again in Grade 9. I thought, “This is it. This is my chance.” But when the time came, I chickened out. I guess I was just too afraid of what would happen if I told you. I feared messing up our friendship and how you would react. I kept things inside me instead of saying anything because I buried myself in schoolwork, hoping you would notice me in any other way. In fact, you were my motivation to do everything. Whenever I wanted to give up, I’d think of you, and that is what gave me the urge to work harder. <br><br>
+Now we are in Grade 10. All these years went by and I did not say anything. But I just cannot stay silent anymore. You had been such a huge part of my life, even when you didn’t know it. You’ve been the one thing that’s kept me going, and I need to tell you the truth—I’ve been in love with you since Grade 7. It's not that I just like you though. <br><br> Over time, I’ve just learned to love everything about you, even things you may not see in yourself. <br><br> It's little things, not merely your smile or how kind you are to everyone. It’s little things that make you, you. I love your imperfections, your flaws, and even those moments when you feel you are not your best. To me, those are the moments that make you real, that make you more beautiful than anything else. I love the way you carry yourself; it is like the very energy that lights a room. I do not know; it’s not something everyone saw in you, but to me and probably many others, that’s what made you so beautiful. <br><br> I see how you try your best strength even when things get tough. I see how you are kind towards people even though they do not deserve it. You have that power within you that I admire so much, even when things are just not going right in your life. I never found fear in front of everyone else to be you. What I like about you is not that you should find happiness and it’s going as fine as you wanted it to. I love you not only when everything is okay, when you are having a bad day when you’re uncertain about who you are. <br><br> I love everything about you—the way you smile, the way you face up to life’s downsides. You have just that particular vibe, that energy, which makes anything you touch sublime, everything sublimely better. And it is not like something you turn on when things are all right—it is just who you are. You are my inspiration throughout all of junior high. Every time I needed a boost for myself, I thought of you. It is because of you that I have been able to push myself to perform better. Also, it is because of you that I have given myself the reason to continue at times when I wanted to quit. It is you who inspire me to become the best version of myself, though we haven’t discussed this much. No matter what happens next, I’m glad that I finally told you. <br><br> You are the cause of everything that I’ve done, and I just want you to know that you’re truly special to me, in every way possible.
+
+                <br><br>
+                With all my heart, <br> Mr. Espino
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Add a "hacking" sound effect (optional, link to a local or hosted audio file)
+        const hackingSound = new Audio('https://example.com/hacking-sound.mp3');  // Replace with actual sound file
+        hackingSound.play();
+
+        // Start the "hacking" sequence with a delay and progress bar animation
+        setTimeout(function() {
+            document.getElementById('hackIntro').classList.add('hidden');
+            document.getElementById('progress-section').classList.remove('hidden');
+            simulateProgressBar();
+        }, 4000);
+
+        // Simulate the progress bar fill
+        function simulateProgressBar() {
+            let progressBar = document.getElementById('progress-bar-inner');
+            let width = 0;
+            let interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    document.getElementById('progress-section').classList.add('hidden');
+                    document.getElementById('step1').style.display = 'block';
+                } else {
+                    width++;
+                    progressBar.style.width = width + '%';
+                }
+            }, 50);  // Progress speed
+        }
+
+        function nextStep(stepId) {
+            // Hide all steps
+            document.querySelectorAll('.step').forEach(step => step.style.display = 'none');
+            // Show the next step
+            document.getElementById(stepId).style.display = 'block';
+        }
+
+        function wrongAnswer() {
+            alert("Incorrect! Try again.");
+        }
+
+        function revealFinalMessage() {
+            document.querySelectorAll('.step').forEach(step => step.style.display = 'none');
+            document.getElementById('finalMessage').style.display = 'block';
+        }
+
+        // Envelope opening animation and showing the letter
+        function openEnvelope() {
+            document.querySelector('.envelope').classList.add('open');
+            setTimeout(function() {
+                document.getElementById('confessionLetter').style.display = 'block';
+            }, 1000); // Letter reveals after 1 second of the envelope opening
+        }
+    </script>
+</body>
+</html>
